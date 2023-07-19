@@ -1,0 +1,30 @@
+ import CsvTable.Repo
+
+Data creation and insertion
+ %CsvTable.Accounts.User{name: "Anurag", email: "mytime", age: 12} |> CsvTable.Repo.insert()
+
+  %CsvTable.Accounts.User{name: "Anmol", email: "time", age: 12} |> CsvTable.Repo.insert()
+
+   %CsvTable.Accounts.User{name: "Anu", email: "mytime", age: 12} |> CsvTable.Repo.insert()
+
+     %CsvTable.Accounts.User{name: "Anml", email: "time", age: 12} |> CsvTable.Repo.insert()
+
+   %CsvTable.Accounts.User{name: "Anur", email: "mytime", age: 12} |> CsvTable.Repo.insert()
+
+
+ data = CsvTable.Repo.all(CsvTable.Accounts.User)
+
+Create data for csv file 
+
+dataset = Enum.join(for user <- data do "#{user.name}, #{user.age}, #{user.email}" end, "\n")
+
+
+csv_content = "name,age,email\n #{dataset}"
+
+Write data for csv file
+
+File.write!("output.csv", csv_content)
+
+
+
+
